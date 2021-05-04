@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "contactManagementApp"
+  "defaultProject": "contactManagementApp",
+  "cli": {
+    "analytics": false
+  }
 }
