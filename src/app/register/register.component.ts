@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   registerUser(registerForm){
     //console.log("this is the data",registerForm);
 
-    this.contactAppService.registerUser(registerForm.value).subscribe(
+    this.contactAppService.registerService(registerForm.value).subscribe(
       (res) =>{
         console.log(res)
       },

@@ -10,7 +10,7 @@ export class ContactAppService {
 
   API = 'https://dummyapi.io/data/api';
 
-  public registerUser(userData){
+  public registerService(userData){
     return this.http.post( this.API + '/post', userData);
   }
 }
