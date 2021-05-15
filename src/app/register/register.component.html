@@ -25,7 +25,7 @@
                 <p-password [toggleMask]="true" #conformPassword (ngModel)="conformPassword" name="conformPassword" id="conformPassword" placeholder="Conform Password"></p-password>
             </div><br>
             <div>
-                <p-button  label="Have Account?"></p-button>
+                <p-button  label="Have Account?" [routerLink]="['/login']"></p-button>
             </div> <br>
             <div>
                 <p-button  label="Register" type="Submit" icon="pi pi-check" iconPos="right"></p-button>
