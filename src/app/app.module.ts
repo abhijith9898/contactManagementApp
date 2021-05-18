@@ -11,12 +11,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { UserContactsComponent } from './user-contacts/user-contacts.component';
+import {TabViewModule} from 'primeng/tabview';
+import {PanelModule} from 'primeng/panel';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserContactsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { RouterModule } from '@angular/router';
     PasswordModule,
     ButtonModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    TabViewModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
