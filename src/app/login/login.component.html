@@ -1,6 +1,8 @@
   <div style="padding-top: 12%;padding-bottom: 14%;padding-left: 40%;padding-right: 36%; background-color: #697eab;">
   <div>
+
       <h2 style="color: white;">User Login</h2>
+
   </div>
   <!--<form #loginForm="ngForm"  id="loginForm" (ngSubmit)="loginUser(loginForm)" style="width: fit-content;">-->
     
@@ -18,7 +20,7 @@
           <p-button  label="Log In"></p-button>
         </div> <br>
         <div>
-          <p-button label="Don't have an account?" ></p-button>
+          <p-button [routerLink]="['/register']" label="Don't have an account?" ></p-button>
         </div>
         <!--style="background: #283e67;"-->
       </div>
