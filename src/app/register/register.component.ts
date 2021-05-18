@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactAppService } from '../contact-app.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,11 +10,10 @@ import { ContactAppService } from '../contact-app.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private contactAppService: ContactAppService) { }
+  constructor(private contactAppService: ContactAppService, private router: Router) { }
 
   ngOnInit(): void {
   }
-
 
   registerUser(registerForm){
     //console.log("this is the data",registerForm);
