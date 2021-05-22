@@ -15,19 +15,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerUser(registerForm){
+  registerUser(registerForm) {
     //console.log("this is the data",registerForm);
 
     this.contactAppService.registerService(registerForm.value).subscribe(
-      (res) =>{
-        console.log(res)
+      (res) => {
+        console.log(res);
       },
-      (err) =>{
+      (err) => {
         console.log(err);
-      }
-    );
+      });
   }
 
-
-  
 }
