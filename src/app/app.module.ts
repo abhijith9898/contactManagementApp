@@ -16,6 +16,9 @@ import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
 import { ContactsListComponent } from './user-contacts/contacts-list/contacts-list.component';
 import {CardModule} from 'primeng/card';
+import { AddcontactsComponent } from './user-contacts/addcontacts/addcontacts.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import {CardModule} from 'primeng/card';
     RegisterComponent,
     UserContactsComponent,
     ContactsListComponent
+    AddcontactsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import {CardModule} from 'primeng/card';
     TabViewModule,
     PanelModule,
     CardModule
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
