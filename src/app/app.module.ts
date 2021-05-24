@@ -14,13 +14,16 @@ import { RouterModule } from '@angular/router';
 import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import {TabViewModule} from 'primeng/tabview';
 import {PanelModule} from 'primeng/panel';
+import { AddcontactsComponent } from './user-contacts/addcontacts/addcontacts.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    UserContactsComponent
+    UserContactsComponent,
+    AddcontactsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {PanelModule} from 'primeng/panel';
     BrowserAnimationsModule,
     RouterModule,
     TabViewModule,
-    PanelModule
+    PanelModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
