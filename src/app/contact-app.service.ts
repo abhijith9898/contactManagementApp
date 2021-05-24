@@ -8,9 +8,9 @@ export class ContactAppService {
 
   constructor(private http: HttpClient) { }
 
-  API = 'https://dummyapi.io/data/api';
+  API = 'http://localhost:8080';
 
   public registerService(userData){
-    return this.http.post( this.API + '/post', userData);
+    return this.http.post( this.API + '/registered', userData);
   }
 }

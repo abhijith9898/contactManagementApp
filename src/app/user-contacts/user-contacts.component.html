@@ -1,17 +1,15 @@
-
-<p-panel >
-    <p-header >
-        <span class="panel-header">CONTACTS MANAGER</span>
-
+<div class="contacts-body" [style]="{'background': '#697eab'}">
+    <p-header>
+        <h2 [style]="{'text-align': 'center', 'padding-top':'21px', 'color':'white'}"><span >CONTACTS MANAGER</span></h2>
     </p-header>
 
-    <p-tabView>
+    <p-tabView >
         <p-tabPanel header="Add Contacts">
             <app-addcontacts></app-addcontacts>
         </p-tabPanel>
         <p-tabPanel header="Contacts List">
-            BBBBB
+            <app-contacts-list></app-contacts-list>
         </p-tabPanel>
     </p-tabView>
-    
-</p-panel>
+</div>
+
