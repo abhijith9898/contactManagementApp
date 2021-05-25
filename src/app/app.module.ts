@@ -26,7 +26,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     LoginComponent,
     RegisterComponent,
     UserContactsComponent,
-    ContactsListComponent
+    ContactsListComponent,
     AddcontactsComponent
   ],
   imports: [
@@ -41,7 +41,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     RouterModule,
     TabViewModule,
     PanelModule,
-    CardModule
+    CardModule,
     InputTextareaModule
   ],
   providers: [],
