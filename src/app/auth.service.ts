@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactAppService {
+export class AuthService
+ {
 
   constructor(private http: HttpClient) { }
 
@@ -12,5 +13,9 @@ export class ContactAppService {
 
   public registerService(userData){
     return this.http.post( this.API + '/registered', userData);
+  }
+
+  public loginService(userData){
+    return this.http.post( this.API + '/login', userData);
   }
 }

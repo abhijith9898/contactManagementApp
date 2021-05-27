@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactAppService } from '../contact-app.service';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private contactAppService: ContactAppService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   registerUser(registerForm) {
     //console.log("this is the data",registerForm);
 
-    this.contactAppService.registerService(registerForm.value).subscribe(
+    this.authService.registerService(registerForm.value).subscribe(
       (res) => {
         console.log(res);
       },
