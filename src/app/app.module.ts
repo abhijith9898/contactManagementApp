@@ -14,11 +14,13 @@ import { RouterModule } from '@angular/router';
 import { UserContactsComponent } from './user-contacts/user-contacts.component';
 import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
-import { ContactsListComponent } from './user-contacts/contacts-list/contacts-list.component';
+//import { ContactsListComponent } from './user-contacts/contacts-list/contacts-list.component';
 import {CardModule} from 'primeng/card';
-import { AddcontactsComponent } from './user-contacts/addcontacts/addcontacts.component';
+//import { AddcontactsComponent } from './user-contacts/addcontacts/addcontacts.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-
+import {TableModule} from 'primeng/table';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     LoginComponent,
     RegisterComponent,
     UserContactsComponent,
-    ContactsListComponent,
-    AddcontactsComponent
+    HomeComponent,
+    AdminComponent
+    // ContactsListComponent,
+    // AddcontactsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     TabViewModule,
     PanelModule,
     CardModule,
-    InputTextareaModule
+    InputTextareaModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,126 @@
 <div class="contacts-body" [style]="{'background': '#697eab'}">
     <p-header>
-        <h2 [style]="{'text-align': 'center', 'padding-top':'21px', 'color':'white'}"><span >CONTACTS MANAGER</span></h2>
+        <h2 [style]="{'text-align': 'center', 'padding-top':'21px', 'color':'white'}"><span>CONTACTS MANAGER</span></h2>
     </p-header>
+</div>
 
-    <p-tabView >
+<div style="position: relative; margin-bottom: 12%; margin-top: 10%;">
+    <div class="p-grid">
+        <div class="p-col-5 p-d-flex p-ai-center p-jc-center">
+            <div class="p-fluid" style="margin-top: 35px; margin-left: 20px;">
+                <form #contactForm="ngForm" id="contactForm" (ngSubmit)="addNewContact(contactForm)">
+                    <div>
+                        <span class="p-float-label">
+                            <input id="fullName" #fullName (ngModel)="fullName" name="fullName" type="text"
+                                placeholder="Full Name" style="width: 40rem; height: 35px;">
+                        </span><br>
+                    </div>
+                    <div>
+                        <span class="p-float-label">
+                            <input id="phone" #phone (ngModel)="phone" name="phone" type="tel"
+                                placeholder="Contact Number" style="width: 40rem; height: 35px;">
+                        </span><br>
+                    </div>
+                    <div>
+                        <span class="p-float-label">
+                            <input id="email" #email (ngModel)="email" name="email" type="email" placeholder="Email Id"
+                                style="width: 40rem; height: 35px;">
+                        </span><br>
+                    </div>
+                    <div>
+                        <span class="p-float-label">
+                            <textarea rows="3" id="address" #address (ngModel)="address" name="address"
+                                placeholder="Address" pInputTextarea autoResize="autoResize"
+                                style="width: 40rem;"></textarea>
+                        </span><br>
+                    </div>
+                    <div>
+                        <p-button label="Add" type="Submit" [style]="{'width': '40rem'}"></p-button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- <p-tabView >
         <p-tabPanel header="Add Contacts">
             <app-addcontacts></app-addcontacts>
         </p-tabPanel>
         <p-tabPanel header="Contacts List">
             <app-contacts-list></app-contacts-list>
         </p-tabPanel>
-    </p-tabView>
-</div>
+    </p-tabView> -->
 
+
+
+<div class="card">
+    <h5>Contacts List</h5>
+    <p-table [value]="dataSource" dataKey="id" editMode="row">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Full Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th style="width:8rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-element let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="element">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="element.fullName">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{element.fullName}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="element.address" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{element.address}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="element.email">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{element.email}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="element.phone">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{element.phone}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                        (click)="onClickEdit(element)" class="p-button-rounded p-button-text"></button>
+                    <button *ngIf="!editing" pButton pRipple type="button" icon="pi pi-trash"
+                        (click)="onClickDelete(element.id)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                        (click)="onClickSave(element)"
+                        class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                        (click)="onClickCancel(element, ri)"
+                        class="p-button-rounded p-button-text p-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
