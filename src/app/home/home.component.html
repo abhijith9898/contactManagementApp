@@ -1,0 +1,14 @@
+<p>home works!</p>
+<div *ngIf="info.token; else loggedOut">
+    <h5 class="text-primary">Your Information</h5>
+    <p>
+        <strong>Username:</strong> {{info.username}}<br/>
+        <strong>Roles:</strong> {{info.authority}}<br />
+        
+    </p>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button>
+</div>
+
+<ng-template #loggedOut>
+    <h3 class="display-2 bg-success">welcome to contact management </h3>
+</ng-template>
