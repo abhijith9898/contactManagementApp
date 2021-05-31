@@ -1,0 +1,20 @@
+.contacts-body{
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+}
+.user-avatar{
+    float: right;
+    margin-bottom: -49px;
+    margin-top: -55px;
+    margin-right: 61px;
+}
+
+.logout-button{
+    float: right;
+    margin-bottom: -49px;
+    margin-top: -58px;
+    margin-right: 155px;
+}

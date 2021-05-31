@@ -37,18 +37,18 @@ export class LoginComponent implements OnInit {
 
     this.authService.loginService(loginForm.value).subscribe(
       (res) => {
-        //console.log("current login id", res.id);
+        
         this.sessionStorageService.saveToken(res.accessToken);
         this.sessionStorageService.saveUsername(res.username);
         this.sessionStorageService.saveAuthorities(res.authorities);
-        //this.sessionStorageService.saveId(res.id);
-        //this.authService.setData(res.id);
+        this.sessionStorageService.saveId(res.id);
+        
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.sessionStorageService.getAuthorities();
         //this.reloadPage();
-        //this.router.navigate(['/home']);
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.log("login error", err);

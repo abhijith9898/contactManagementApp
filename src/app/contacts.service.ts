@@ -14,21 +14,45 @@ export class ContactsService {
 
   constructor(private http: HttpClient) { }
 
-  public getContact() {
-    //console.log("auth response id", this.authResponse.id);
-    return this.http.get<Contact[]>(this.API + '/api/' + this.authResponse.id + '/address');
+  /*--------------------------------USER SERVICES----------------------------------------------------*/
+
+  public getContact(currentUserId) {
+    //console.log("get contact of user id", currentUserId);
+    return this.http.get<Contact[]>(this.API + '/api/' + currentUserId + '/address');
   }
 
-  public createContact(contact: Contact) {
-    return this.http.post<Contact>(this.API + '/api/' + this.authResponse.id + '/address', contact);
+  public createContact(contact: Contact, currentUserId) {
+    return this.http.post<Contact>(this.API + '/api/' + currentUserId + '/address', contact);
   }
 
-  public updateContact(contact: Contact) {
-    console.log("Update on service", contact);
-    return this.http.put<Contact>(this.API + '/api/' + this.authResponse.id + '/address/' + contact.id, contact);
+  public updateContact(contact: Contact, currentUserId) {
+    console.log("Update on service id", contact.id);
+    return this.http.put<Contact>(this.API + '/api/' + currentUserId + '/address/' + contact.id, contact);
   }
 
-  public deleteContact(id: number) {
-    return this.http.delete(this.API + '/api/' + this.authResponse.id + '/address/' + id);
+  public deleteContact(contactId: number, currentUserId) {
+    return this.http.delete(this.API + '/api/' + currentUserId + '/address/' + contactId);
   }
+
+/*--------------------------------ADMIN SERVICES----------------------------------------------------*/
+
+public getAdminContact() {
+  return this.http.get<Contact[]>(this.API + '/api/address');
+}
+
+public createAdminContact(contact: Contact, currentUserId) {
+  return this.http.post<Contact>(this.API + '/api/' + currentUserId + '/address', contact);
+}
+
+public updateAdminContact(contact: Contact) {
+  console.log("Update on admin id", contact.id);
+  return this.http.put<Contact>(this.API + '/api/address/' + contact.id, contact);
+}
+
+public deleteAdminContact(contactId: number) {
+  return this.http.delete(this.API + '/api/address/' + contactId);
+}
+
+
+
 }

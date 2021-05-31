@@ -22,20 +22,18 @@ export class HomeComponent implements OnInit {
     };
 
     var authorityValue = this.sessionStorage.getAuthorities();
-    
-
     authorityValue.every(authority => {
       var a:any = Object.values(authority);
       console.log("this is a",a[0]);
       this.info.authority = a[0];
     });
 
-    
+    console.log("this is the role in home", this.info.authority);
   }
 
   logout() {
     this.sessionStorage.signOut();
-    window.location.reload();
+    this.router.navigate(['/login']);
   }
 
 }

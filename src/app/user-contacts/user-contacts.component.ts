@@ -12,58 +12,65 @@ import { AuthService } from '../auth/auth.service';
 })
 export class UserContactsComponent implements OnInit {
 
- // displayedColumns  :  string[] = ['id', 'name', 'title', 'email', 'phone', 'address', 'city', 'actions'];
+
   dataSource: Contact[];
-  
-  contact:Contact;
+  currentUserId : any;
+  contact: Contact;
 
   constructor(private contactsService: ContactsService, private router: Router, private sessionStorage: SessionStorageService, private authService: AuthService) { }
 
   ngOnInit(): void {
 
-    
-    this.contactsService.getContact().subscribe((result)=>{   
-      console.log(result); 
-      this.dataSource  =  result;
-    })
+    if (this.sessionStorage.getToken()) {
+      let contactOfUserId = this.sessionStorage.getId();
+      this.currentUserId = contactOfUserId;
+      // console.log("this is the user id in contacts", ContactOfUserId); 
+      this.contactsService.getContact(contactOfUserId).subscribe((result) => {
+        console.log(result);
+        this.dataSource = result;
+      })
+    }
+
   }
 
-  onClickEdit(contact:Contact){
+
+  
+  addNewContact(contactForm) {
+
+    console.log("form value and user id", contactForm.value, this.currentUserId);
+
+    this.contactsService.createContact(contactForm.value, this.currentUserId).subscribe((result) => {
+      console.log("createnewcontact", result);
+      window.location.reload();
+    });
+  }
+
+  onClickEdit(contact: Contact) {
     this.contact = contact;
     console.log("selected: ", this.contact);
   }
 
-  // newContact(){
-  //   this.contact = {};
-  // }
 
-  addNewContact(contactForm){
 
-    console.log("form value: ", contactForm.value);
-
-    this.contactsService.createContact(contactForm.value).subscribe((result)=>{
-      console.log("createnewcontact",result);
+  onClickDelete(contactId) {
+    console.log("delete id and user id", contactId, this.currentUserId);
+    this.contactsService.deleteContact(contactId, this.currentUserId).subscribe((result) => {
+      console.log("onclickdelete", result);
       window.location.reload();
-    });
-    
-  }
-
-  onClickDelete(id){
-    console.log("delete id", id);
-    this.contactsService.deleteContact(id).subscribe((result)=>{
-      console.log("onclickdelete",result);
+    },
+    (error) => {
       window.location.reload();
     });
   }
 
-  onClickSave(contact){
-    console.log("Update", contact);
+  onClickSave(contact) {
+    console.log("Update contact and contact id and user id", contact, contact.id, this.currentUserId);
     contact.id = this.contact['id'];
-    this.contactsService.updateContact(contact).subscribe((result)=>{
-      console.log("result is",result);
+    this.contactsService.updateContact(contact, this.currentUserId).subscribe((result) => {
+      console.log("result is", result);
     });
   }
 
-  onClickCancel(contact, index){}
+  onClickCancel(contact, index) { }
 
 }

@@ -21,6 +21,9 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {TableModule} from 'primeng/table';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { ChipModule } from 'primeng/chip';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,7 @@ import { AdminComponent } from './admin/admin.component';
     UserContactsComponent,
     HomeComponent,
     AdminComponent
-    // ContactsListComponent,
-    // AddcontactsComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,10 @@ import { AdminComponent } from './admin/admin.component';
     PanelModule,
     CardModule,
     InputTextareaModule,
-    TableModule
+    TableModule,
+    ChipModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
   providers: [],
   bootstrap: [AppComponent]
