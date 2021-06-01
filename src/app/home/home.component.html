@@ -1,0 +1,37 @@
+<div class="contacts-body" [style]="{'background': '#697eab'}">
+    <p-header>
+        <h2 [style]="{'text-align': 'center', 'padding-top':'21px', 'color':'white'}"><span>CONTACTS MANAGER</span>
+        </h2>
+    </p-header>
+
+    <div *ngIf="info.token">
+        <div class="logout-button">
+            <button pButton pRipple type="button" (click)="logout()" icon="pi pi-power-off" class="p-button-rounded p-button-secondary"></button>
+        </div>
+        <div class="user-avatar">
+            <span>
+                <p-avatar icon="pi pi-user" styleClass="p-mr-2"  shape="circle"></p-avatar>
+            </span>&nbsp;
+            <span style="color: whitesmoke;">
+                {{ info.username }}
+            </span>
+        </div>
+    </div>
+    <div *ngIf="!info.token" class="user-avatar">
+        <button pButton [routerLink]="['/login']" pRipple type="button" label="Login" class="p-button-raised p-button-secondary"></button>
+    </div>
+    
+</div>
+
+
+
+<div>
+    <div *ngIf="info.authority === 'ROLE_USER'">
+        <app-user-contacts></app-user-contacts>
+    </div>
+    <div *ngIf="info.authority === 'ROLE_ADMIN'">
+        <app-admin></app-admin>
+    </div>
+</div>
+
+
