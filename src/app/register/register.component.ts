@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   registerInfo: RegisterInfo;
   isSignedUp = false;
   isSignUpFailed = false;
+  message = '';
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
         console.log(res);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
+        this.message = res;
       },
       (err) => {
         console.log(err);

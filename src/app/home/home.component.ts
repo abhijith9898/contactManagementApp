@@ -33,7 +33,12 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.sessionStorage.signOut();
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
+    this.reloadPage();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 
 }
