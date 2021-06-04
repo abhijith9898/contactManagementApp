@@ -24,6 +24,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ChipModule } from 'primeng/chip';
 import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
     TableModule,
     ChipModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

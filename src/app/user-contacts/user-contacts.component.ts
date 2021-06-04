@@ -14,7 +14,7 @@ export class UserContactsComponent implements OnInit {
 
 
   dataSource: Contact[];
-  currentUserId : any;
+  currentUserId: any;
   contact: Contact;
 
   constructor(private contactsService: ContactsService, private router: Router, private sessionStorage: SessionStorageService, private authService: AuthService) { }
@@ -34,7 +34,7 @@ export class UserContactsComponent implements OnInit {
   }
 
 
-  
+
   addNewContact(contactForm) {
 
     console.log("form value and user id", contactForm.value, this.currentUserId);
@@ -55,12 +55,13 @@ export class UserContactsComponent implements OnInit {
   onClickDelete(contactId) {
     console.log("delete id and user id", contactId, this.currentUserId);
     this.contactsService.deleteContact(contactId, this.currentUserId).subscribe((result) => {
-      console.log("onclickdelete", result);
+      console.log("delet succesful", result);
       window.location.reload();
     },
-    (error) => {
-      window.location.reload();
-    });
+      (error) => {
+        //window.location.reload();
+        console.log("delet failed", error);
+      });
   }
 
   onClickSave(contact) {

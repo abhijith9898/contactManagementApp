@@ -5,6 +5,7 @@
             <div class="p-fluid" style="margin-top: 35px; margin-left: 20px;">
                 <form #contactForm="ngForm" id="contactForm" (ngSubmit)="addNewContact(contactForm)">
                     <div>
+                        <!-- <label for="fullName">Full Name </label>  -->
                         <span class="p-float-label">
                             <input id="fullName" #fullName (ngModel)="fullName" name="fullName" type="text"
                                 placeholder="Full Name" style="width: 40rem; height: 35px;">
