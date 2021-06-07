@@ -1,5 +1,5 @@
 
-
+<p-toast></p-toast>
 <div class="register-body">
     <div>
         <h2 style="color: white;">USER REGISTRATION</h2>
@@ -35,12 +35,12 @@
             <div>
                 <p-button  label="Have Account?" [routerLink]="['/login']"></p-button>
             </div><br>
-            <div *ngIf="registerForm.submitted && isSignUpFailed" class="alert alert-warning">
-                <br>Registration Failed!<br/>{{errorMessage}}
+            <!-- <div *ngIf="registerForm.submitted && isSignUpFailed" class="alert alert-warning">
+                <br><br/>{{errorMessage}}
               </div>
               <div *ngIf="registerForm.submitted && !isSignUpFailed" class="alert alert-warning">
-                <br>Registration Successfull<br/>{{message}}
-              </div>
+                <br><br/>{{message}}
+              </div> -->
             <!--style="background: #283e67;"-->
         </div>
 

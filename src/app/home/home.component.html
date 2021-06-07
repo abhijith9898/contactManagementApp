@@ -17,6 +17,9 @@
             </span>
         </div>
     </div>
+    <div *ngIf="!info.token" class="logout-button">
+        <button pButton [routerLink]="['/register']" pRipple type="button" label="Register" class="p-button-raised p-button-secondary"></button>
+    </div>
     <div *ngIf="!info.token" class="user-avatar">
         <button pButton [routerLink]="['/login']" pRipple type="button" label="Login" class="p-button-raised p-button-secondary"></button>
     </div>

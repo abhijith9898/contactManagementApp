@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { RegisterInfo } from '../auth/register-info';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [MessageService]
 })
 export class RegisterComponent implements OnInit {
 
@@ -17,31 +19,47 @@ export class RegisterComponent implements OnInit {
   message = '';
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private messageService: MessageService) { }
 
   ngOnInit(): void {
   }
 
   registerUser(registerForm) {
-    console.log("this is the data",registerForm);
+   
 
     this.registerInfo = new RegisterInfo(
       this.form.username,
       this.form.password
     );
 
-    this.authService.registerService(registerForm.value).subscribe(
-      (res) => {
-        console.log(res);
-        this.isSignedUp = true;
-        this.isSignUpFailed = false;
-        this.message = res;
-      },
-      (err) => {
-        console.log(err);
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      });
+    console.log("this is the data",registerForm.value);
+
+    if ( registerForm.value.username == undefined)
+    {
+      this.messageService.add({severity:'warn', detail: 'Enter a Username!'});
+      
+    }
+    else if (registerForm.value.password == undefined)
+    {
+      this.messageService.add({severity:'warn', detail: 'Enter a Password!'});
+    }
+    else
+    {
+      this.authService.registerService(registerForm.value).subscribe(
+        (res) => {
+          console.log(res);
+          this.isSignedUp = true;
+          this.isSignUpFailed = false;
+          this.message = res;
+          this.messageService.add({severity:'success', detail: 'Registration Successfull!'});
+        },
+        (err) => {
+          console.log(err);
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+          this.messageService.add({severity:'error', summary: 'Registration Failed!', detail: this.errorMessage});
+        });
+    }
   }
 
 }

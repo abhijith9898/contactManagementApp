@@ -4,21 +4,23 @@ import { ContactsService } from '../contacts.service';
 import { Contact } from '../contact-model';
 import { SessionStorageService } from '../auth/session-storage.service';
 import { AuthService } from '../auth/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+  providers: [MessageService]
 })
 export class AdminComponent implements OnInit {
 
 
 
   dataSource: Contact[];
-  adminId : any;
+  adminId: any;
   contact: Contact;
 
-  constructor(private contactsService: ContactsService, private router: Router, private sessionStorage: SessionStorageService, private authService: AuthService) { }
+  constructor(private contactsService: ContactsService, private router: Router, private sessionStorage: SessionStorageService, private authService: AuthService, private messageService: MessageService) { }
 
   ngOnInit(): void {
 
@@ -37,11 +39,15 @@ export class AdminComponent implements OnInit {
   addNewContact(contactForm) {
 
     console.log("form value and user id", contactForm.value, this.adminId);
-
-    this.contactsService.createAdminContact(contactForm.value, this.adminId).subscribe((result) => {
-      console.log("createnewcontact", result);
-      window.location.reload();
-    });
+    if (contactForm.value.fullName == undefined || contactForm.value.phone == undefined || contactForm.value.email == undefined || contactForm.value.address == undefined) {
+      this.messageService.add({ severity: 'warn', detail: 'Enter all contact details' });
+    }
+    else {
+      this.contactsService.createAdminContact(contactForm.value, this.adminId).subscribe((result) => {
+        console.log("createnewcontact", result);
+        window.location.reload();
+      });
+    }
   }
 
   onClickEdit(contact: Contact) {

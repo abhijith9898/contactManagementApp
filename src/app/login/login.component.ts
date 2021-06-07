@@ -3,12 +3,14 @@ import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { LoginInfo } from '../auth/login-info';
 import { SessionStorageService } from '../auth/session-storage.service';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   private loginInfo: LoginInfo;
 
-  constructor(private authService: AuthService, private router: Router, private sessionStorageService: SessionStorageService) { }
+  constructor(private authService: AuthService, private router: Router, private sessionStorageService: SessionStorageService, private messageService: MessageService) { }
 
   ngOnInit(): void {
 
@@ -35,6 +37,18 @@ export class LoginComponent implements OnInit {
       this.form.username,
       this.form.password);
 
+
+      if ( loginForm.value.username == undefined)
+    {
+      this.messageService.add({severity:'warn', detail: 'Enter a Username!'});
+      
+    }
+    else if (loginForm.value.password == undefined)
+    {
+      this.messageService.add({severity:'warn', detail: 'Enter a Password!'});
+    }
+    else
+    {
     this.authService.loginService(loginForm.value).subscribe(
       (res) => {
         
@@ -54,8 +68,9 @@ export class LoginComponent implements OnInit {
         console.log("login error", err);
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.messageService.add({severity:'error', summary: 'Login Failed!', detail: this.errorMessage});
       });
-
+    }
   }
 
 
