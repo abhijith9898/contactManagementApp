@@ -41,7 +41,7 @@ export class SessionStorageService {
   }
 
   public saveUsername(username: string) {
-    console.log("this is the username key",username);
+    //console.log("this is the username key",username);
     window.sessionStorage.removeItem(USERNAME_KEY);
     window.sessionStorage.setItem(USERNAME_KEY, username);
   }

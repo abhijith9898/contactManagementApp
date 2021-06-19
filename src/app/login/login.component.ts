@@ -28,11 +28,12 @@ export class LoginComponent implements OnInit {
     if (this.sessionStorageService.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.sessionStorageService.getAuthorities();
+      this.router.navigate(['/home']);
     }
   }
 
   loginUser(loginForm) {
-    console.log("this is the login data",loginForm);
+    //console.log("this is the login data",loginForm);
     this.loginInfo = new LoginInfo(
       this.form.username,
       this.form.password);

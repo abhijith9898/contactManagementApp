@@ -2,35 +2,47 @@
 <div style="position: relative; margin-bottom: 4%; margin-top: 10%;">
     <div class="p-grid">
         <div class="p-col-5 p-d-flex p-ai-center p-jc-center">
-            <div class="p-fluid" style="margin-top: 35px; margin-left: 20px;">
+            <div class="p-fluid" style="margin-top: 35px; margin-left: 23%;">
                 <form #contactForm="ngForm" id="contactForm" (ngSubmit)="addNewContact(contactForm)">
-                    <div>
-                        <span class="p-float-label">
-                            <input id="fullName" #fullName (ngModel)="fullName" name="fullName" type="text"
-                                placeholder="Full Name" style="width: 40rem; height: 35px;">
-                        </span><br>
+                    <div class="p-field p-grid block-div">
+                        <label for="firstname" class="p-col-fixed" style="width:100px">First Name :</label>
+                        <div class="p-col">
+                            <span class="p-float-label">
+                                <input id="fullName" #fullName (ngModel)="fullName" name="fullName"
+                                    type="text" placeholder="Full Name" style="width: 40rem; height: 35px;">
+                            </span><br>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid block-div">
+                        <label for="phone" class="p-col-fixed" style="width:100px">Phone No :</label>
+                        <div class="p-col">
+                            <span class="p-float-label">
+                                <input id="phone" #phone (ngModel)="phone" name="phone" type="tel"
+                                    placeholder="Phone No" style="width: 40rem; height: 35px;">
+                            </span><br>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid block-div">
+                        <label for="email" class="p-col-fixed" style="width:100px">Email Id :</label>
+                        <div class="p-col">
+                            <span class="p-float-label">
+                                <input id="email" #email (ngModel)="email" name="email" type="email"
+                                    placeholder="Email Id" style="width: 40rem; height: 35px;">
+                            </span><br>
+                        </div>
+                    </div>
+                    <div class="p-field p-grid block-div">
+                        <label for="address" class="p-col-fixed" style="width:100px">Address :</label>
+                        <div class="p-col">
+                            <span class="p-float-label">
+                                <textarea rows="3" id="address" #address (ngModel)="address" name="address"
+                                    placeholder="Address" pInputTextarea autoResize="autoResize"
+                                    style="width: 40rem;"></textarea>
+                            </span><br>
+                        </div>
                     </div>
                     <div>
-                        <span class="p-float-label">
-                            <input id="phone" #phone (ngModel)="phone" name="phone" type="tel"
-                                placeholder="Contact Number" style="width: 40rem; height: 35px;">
-                        </span><br>
-                    </div>
-                    <div>
-                        <span class="p-float-label">
-                            <input id="email" #email (ngModel)="email" name="email" type="email" placeholder="Email Id"
-                                style="width: 40rem; height: 35px;">
-                        </span><br>
-                    </div>
-                    <div>
-                        <span class="p-float-label">
-                            <textarea rows="3" id="address" #address (ngModel)="address" name="address"
-                                placeholder="Address" pInputTextarea autoResize="autoResize"
-                                style="width: 40rem;"></textarea>
-                        </span><br>
-                    </div>
-                    <div>
-                        <p-button label="Add" type="Submit" [style]="{'width': '40rem'}"></p-button>
+                        <p-button label="Add" type="Submit" [style]="{'width': '39.9rem', 'margin-left': '9.9%'}"></p-button>
                     </div>
                 </form>
             </div>

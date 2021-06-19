@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   public loginService(credentials: LoginInfo): Observable<AuthResponse> {
-    console.log("login details", credentials);
+    //console.log("login details", credentials);
     return this.http.post<AuthResponse>(this.API + '/api/auth/signin', credentials);
   }
 

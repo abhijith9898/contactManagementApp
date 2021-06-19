@@ -3,6 +3,7 @@ import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { RegisterInfo } from '../auth/register-info';
 import { MessageService } from 'primeng/api';
+import { SessionStorageService } from '../auth/session-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -19,20 +20,22 @@ export class RegisterComponent implements OnInit {
   message = '';
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router, private messageService: MessageService) { }
+  constructor(private authService: AuthService, private router: Router, private sessionStorageService: SessionStorageService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    if (this.sessionStorageService.getToken()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   registerUser(registerForm) {
    
-
     this.registerInfo = new RegisterInfo(
       this.form.username,
       this.form.password
     );
 
-    console.log("this is the data",registerForm.value);
+    // console.log("this is the data",registerForm.value);
 
     if ( registerForm.value.username == undefined)
     {
@@ -47,7 +50,7 @@ export class RegisterComponent implements OnInit {
     {
       this.authService.registerService(registerForm.value).subscribe(
         (res) => {
-          console.log(res);
+          //console.log(res);
           this.isSignedUp = true;
           this.isSignUpFailed = false;
           this.message = res;
